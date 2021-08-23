@@ -25,15 +25,9 @@ function checkHit() {
     }
 }
 
-// for (let i = 0; i <= 9; i++) {
-//     getHole[i].onclick = function () {
-//         console.log('fgfgf');
-//         // checkHit();
-//     };
-// }
-
-for (let elem of getHole) {
-    elem.onclick = function () {
+for (let i = 0; i < 10; i++) {
+    const hole = document.getElementById('hole' + i);
+    hole.onclick = function () {
         checkHit();
     };
 }
