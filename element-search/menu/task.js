@@ -1,17 +1,15 @@
 'use strict';
-
 const menuLink = document.querySelectorAll('.menu__link');
 
 for (const click of menuLink) {
     click.onclick = function () {
-        const openMenu = Array.from(document.querySelectorAll('ul.menu_sub'));
+        const openMenu = document.querySelectorAll('ul.menu_sub');
 
-        for (let i = 0; i < openMenu.length; i++) {
-            openMenu[i].classList.toggle('menu_active');
+        for (const elem of openMenu) {
+            if (click.closest('li') === elem.closest('li')) {
+                elem.classList.toggle('menu_active');
+                return false;
+            }
         }
-
-        console.log(openMenu);
-        return false;
     };
 }
-console.log(menuLink);
