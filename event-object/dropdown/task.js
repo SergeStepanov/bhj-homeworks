@@ -9,11 +9,13 @@ btnClick.addEventListener('click', () => {
 }); //ok
 
 dropdownItems.forEach((item) => {
-    item.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        btnClick.textContent = item.textContent;
-
-        btnUl.classList.remove('dropdown__list_active');
-    });
+    item.addEventListener('click', onClick);
 });
+
+function onClick(event) {
+    event.preventDefault();
+
+    btnClick.textContent = this.textContent;
+
+    btnUl.classList.remove('dropdown__list_active');
+}
