@@ -24,17 +24,20 @@ class Game {
       В случае правильного ввода слова вызываем this.success()
       При неправильном вводе символа - this.fail();
      */
-        const keySymbol = Array.from(document.querySelectorAll('.symbol'));
 
-        keySymbol.forEach((sym) => {
-            sym.addEventListener('keyup', itemFunc);
+        addEventListener('keyup', (event) => {
+            if (
+                this.currentSymbol.textContent.toLowerCase() ===
+                event.key.toLowerCase()
+            ) {
+                // console.log(event.key, this.currentSymbol);
+                this.success();
+            } else {
+                this.fail();
+            }
         });
 
-        function itemFunc(e) {
-            e.textContent = this.textContent;
-            console.log(e.key);
-        }
-        console.log(keySymbol);
+        // console.log(this.currentSymbol);
     }
 
     success() {
