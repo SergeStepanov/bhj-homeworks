@@ -3,7 +3,10 @@
 const hints = document.querySelectorAll('.has-tooltip');
 
 for (const item of hints) {
-    item.insertAdjacentHTML('afterEnd', "<div class='tooltip'></div>");
+    const tooltipDivNew = document.createElement('div');
+    tooltipDivNew.classList.add('tooltip');
+
+    item.insertAdjacentElement('afterEnd', tooltipDivNew);
 
     item.addEventListener('click', funcHint);
 }
@@ -13,6 +16,10 @@ function funcHint(e) {
     const hint = this.getAttribute('title');
     const tooltipDiv = document.querySelector('.tooltip');
     tooltipDiv.textContent = hint;
+
+    const { left, bottom } = this.getBoundingClientRect();
+    tooltipDiv.style.left = left + 'px';
+    tooltipDiv.style.top = bottom + 'px';
 
     if (e.target) {
         tooltipDiv.classList.toggle('tooltip_active');
