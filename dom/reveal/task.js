@@ -1,4 +1,6 @@
 'use strict';
+<<<<<<< HEAD
+=======
 
 window.addEventListener('scroll', onScroll);
 
@@ -29,3 +31,4 @@ function onScroll() {
     }
 }
 // elementTop > viewportHeight ||
+>>>>>>> 0324efbb0acfebbb5878338388e8c01eda95dd0d
