@@ -27,8 +27,6 @@ function funcHint(e) {
 
         tooltipDivNew.remove();
 
-        count.remove();
-
         // console.log(`${count} ---1`);
     } else if (e.target) {
         tooltipDiv.classList.add('tooltip_active');
