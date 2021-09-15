@@ -13,8 +13,8 @@ function addedTask(e) {
     e.preventDefault();
 
     if (
-        (e.key === 'Enter' && tasksInput.value !== '') ||
-        (e.target === btnTasksAdd && tasksInput.value !== '')
+        (e.key === 'Enter' && tasksInput.value.trim() !== '') ||
+        (e.target === btnTasksAdd && tasksInput.value.trim() !== '')
     ) {
         tasksList.insertAdjacentHTML(
             'afterBegin',
@@ -33,7 +33,7 @@ function deletedTask(e) {
     e.preventDefault();
 
     const taskRemoves = document.querySelectorAll('.task__remove');
-    const task = document.querySelector('.task');
+    const task = e.target.closest('.task');
 
     for (const item of taskRemoves) {
         if (e.target === item) {
