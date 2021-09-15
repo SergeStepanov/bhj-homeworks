@@ -1,19 +1,20 @@
 'use strict';
 
 const hints = document.querySelectorAll('.has-tooltip');
+const tooltipDivNew = document.createElement('div');
+tooltipDivNew.classList.add('tooltip');
 
 for (const item of hints) {
-    const tooltipDivNew = document.createElement('div');
-    tooltipDivNew.classList.add('tooltip');
-
-    item.insertAdjacentElement('afterEnd', tooltipDivNew);
-
     item.addEventListener('click', funcHint);
 }
+let count = null;
 
 function funcHint(e) {
     e.preventDefault();
     const hint = this.getAttribute('title');
+
+    this.insertAdjacentElement('afterEnd', tooltipDivNew);
+
     const tooltipDiv = document.querySelector('.tooltip');
     tooltipDiv.textContent = hint;
 
@@ -21,8 +22,17 @@ function funcHint(e) {
     tooltipDiv.style.left = left + 'px';
     tooltipDiv.style.top = bottom + 'px';
 
-    if (e.target) {
-        tooltipDiv.classList.toggle('tooltip_active');
-        console.log(tooltipDiv);
+    if (count === hint) {
+        count = null;
+
+        tooltipDivNew.remove();
+
+        count.remove();
+
+        // console.log(`${count} ---1`);
+    } else if (e.target) {
+        tooltipDiv.classList.add('tooltip_active');
+        count = this.nextElementSibling.textContent;
+        // console.log(count);
     }
 }
