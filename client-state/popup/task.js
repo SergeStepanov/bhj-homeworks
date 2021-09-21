@@ -9,18 +9,9 @@ window.onload = () => {
         setCookie('modalActive', 'false');
     };
 
-    if (window.onload && getCookie('modalActive') === null) {
+    if (getCookie('modalActive') === null) {
         subscribeModal.classList.add('modal_active');
-    } else {
-        document.cookie = document.cookie;
     }
-    //     window.onload &&
-    //     subscribeModal.classList.contains('modal_active')
-    // ) {
-    //     document.cookie = '';
-    // } else if (subscribeModal.matches('modal_active') === false) {
-    //     setCookie('modalActive', 'false');
-    // }
 
     function setCookie(name, value) {
         document.cookie = name + '=' + encodeURIComponent(value);
