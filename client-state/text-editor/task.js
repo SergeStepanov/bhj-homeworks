@@ -7,5 +7,5 @@ editor.addEventListener('input', function () {
 });
 
 window.onload = function () {
-    editor.value = localStorage.text;
+    editor.value = localStorage.getItem('text');
 };
