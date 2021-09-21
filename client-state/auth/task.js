@@ -17,7 +17,7 @@ signinForm.addEventListener('submit', (e) => {
         if (response.readyState === 4) {
             const parseResponse = JSON.parse(response.responseText);
 
-            if (parseResponse.success === true) {
+            if (parseResponse.success) {
                 localStorage.userId = parseResponse.user_id;
                 userId.textContent = localStorage.userId;
                 welcomeUser.classList.add('welcome_active');
@@ -33,3 +33,9 @@ signinForm.addEventListener('submit', (e) => {
 
     response.send(formData);
 });
+
+if (localStorage.getItem('userId')) {
+    userId.textContent = localStorage.userId;
+    welcomeUser.classList.add('welcome_active');
+    signin.classList.remove('signin_active');
+}
